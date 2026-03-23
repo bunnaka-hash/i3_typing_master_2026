@@ -12,6 +12,10 @@ class UserRepository {
         users.put(username, password);
     }
 
+    void updatePassword(String username, String newPassword) {
+        users.put(username, newPassword);
+    }
+
     boolean isValidCredentials(String username, String password) {
         return users.containsKey(username) && users.get(username).equals(password);
     }
