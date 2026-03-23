@@ -1,4 +1,6 @@
 class LoginScreen {
+    private final LoginService loginService = new LoginService(UserStore.REPOSITORY);
+
     void show() {
         System.out.println("===== LOGIN =====");
 
@@ -8,11 +10,7 @@ class LoginScreen {
         System.out.print("Enter password: ");
         String password = InputReader.readLine();
 
-        boolean isValid = UserStore.REPOSITORY.isValidCredentials(username, password);
-        if (isValid) {
-            System.out.println("Login successful.");
-        } else {
-            System.out.println("Invalid username or password.");
-        }
+        String result = loginService.login(username, password);
+        System.out.println(result);
     }
 }
